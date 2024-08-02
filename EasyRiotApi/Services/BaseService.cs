@@ -6,13 +6,13 @@ namespace EasyRiotApi.Services;
 
 internal abstract class BaseService(IHttpClientFactory httpClientFactory, ILogger<BaseService> logger)
 {
-    protected readonly HttpClient Client = httpClientFactory.CreateClient("RiotApiClient");
+    private readonly HttpClient _client = httpClientFactory.CreateClient("RiotApiClient");
 
     protected async Task<RiotApiResult<T>> GetAsync<T>(string url)
     {
         try
         {
-            var response = await Client.GetAsync(url);
+            var response = await _client.GetAsync(url);
             return await HandleResponseAsync<T>(response);
         }
         catch (HttpRequestException ex)
