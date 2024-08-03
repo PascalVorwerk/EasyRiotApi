@@ -7,7 +7,7 @@ namespace EasyRiotApi.Services;
 internal abstract class BaseService(IHttpClientFactory httpClientFactory, ILogger<BaseService> logger)
 {
     private readonly HttpClient _client = httpClientFactory.CreateClient("RiotApiClient");
-
+    private JsonSerializerOptions options = new(JsonSerializerDefaults.Web);
     protected async Task<RiotApiResult<T>> GetAsync<T>(string url)
     {
         try
@@ -33,7 +33,7 @@ internal abstract class BaseService(IHttpClientFactory httpClientFactory, ILogge
             var content = await response.Content.ReadAsStringAsync();
             return new RiotApiResult<T>()
             {
-                Data = JsonSerializer.Deserialize<T>(content),
+                Data = JsonSerializer.Deserialize<T>(content, options),
                 StatusCode = response.StatusCode
             };
         }
@@ -42,7 +42,7 @@ internal abstract class BaseService(IHttpClientFactory httpClientFactory, ILogge
         return new RiotApiResult<T>()
         {
             ErrorMessage = response.ReasonPhrase,
-            StatusCode = response.StatusCode
+            StatusCode = response.StatusCode,
         };
     }
 }

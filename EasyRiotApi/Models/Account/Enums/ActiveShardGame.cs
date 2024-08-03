@@ -1,4 +1,4 @@
-namespace EasyRiotApi.Models.Enums;
+namespace EasyRiotApi.Models.Account.Enums;
 
 public enum ActiveShardGame
 {

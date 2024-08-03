@@ -1,4 +1,4 @@
-namespace EasyRiotApi.Models;
+namespace EasyRiotApi.Models.ChampionMastery;
 
 public class ChampionInfoDto
 {

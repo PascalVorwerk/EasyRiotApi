@@ -1,5 +1,6 @@
 using EasyRiotApi.Models;
-using EasyRiotApi.Models.Enums;
+using EasyRiotApi.Models.ChampionMastery;
+using EasyRiotApi.Models.Common.Enums;
 using EasyRiotApi.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 
@@ -7,25 +8,25 @@ namespace EasyRiotApi.Services;
 
 internal class ChampionMasteryService(IHttpClientFactory factory, ILogger<ChampionMasteryService> logger): BaseService(factory, logger), IChampionMasteryService
 {
-    public Task<RiotApiResult<ChampionMasteryDto>> GetChampionMasteryByChampionId(string puuid, int championId, LeagueOfLegendsPlatform platform)
+    public Task<RiotApiResult<ChampionMasteryDto>> GetChampionMasteryByChampionIdAsync(string puuid, int championId, LeagueOfLegendsPlatform platform)
     {
         var url = $"{GetChampionMasteryBaseUrl(platform)}/champion-masteries/by-puuid/{puuid}/by-champion/{championId}";
         return GetAsync<ChampionMasteryDto>(url);
     }
 
-    public Task<RiotApiResult<List<ChampionMasteryDto>>> GetChampionMasteries(string puuid, LeagueOfLegendsPlatform platform)
+    public Task<RiotApiResult<List<ChampionMasteryDto>>> GetChampionMasteriesAsync(string puuid, LeagueOfLegendsPlatform platform)
     {
         var url = $"{GetChampionMasteryBaseUrl(platform)}/champion-masteries/by-puuid/{puuid}";
         return GetAsync<List<ChampionMasteryDto>>(url);
     }
 
-    public Task<RiotApiResult<List<ChampionMasteryDto>>> GetTopChampionMasteries(string puuid, int count, LeagueOfLegendsPlatform platform)
+    public Task<RiotApiResult<List<ChampionMasteryDto>>> GetTopChampionMasteriesAsync(string puuid, int count, LeagueOfLegendsPlatform platform)
     {
         var url = $"{GetChampionMasteryBaseUrl(platform)}/champion-masteries/by-puuid/{puuid}/top?count={count}";
         return GetAsync<List<ChampionMasteryDto>>(url);
     }
 
-    public Task<RiotApiResult<int>> GetTotalChampionMasteryScore(string puuid, LeagueOfLegendsPlatform platform)
+    public Task<RiotApiResult<int>> GetTotalChampionMasteryScoreAsync(string puuid, LeagueOfLegendsPlatform platform)
     {
         var url = $"{GetChampionMasteryBaseUrl(platform)}/scores/by-puuid/{puuid}";
         return GetAsync<int>(url);

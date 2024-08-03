@@ -1,9 +1,10 @@
 using EasyRiotApi.Models;
-using EasyRiotApi.Models.Enums;
+using EasyRiotApi.Models.ChampionMastery;
+using EasyRiotApi.Models.Common.Enums;
 
 namespace EasyRiotApi.Services.Interfaces;
 
 public interface IChampionService
 {
-    public Task<RiotApiResult<ChampionInfoDto>> GetChampionByIdAsync(LeagueOfLegendsPlatform platform);
+    public Task<RiotApiResult<ChampionInfoDto>> GetChampionRotationsAsync(LeagueOfLegendsPlatform platform);
 }

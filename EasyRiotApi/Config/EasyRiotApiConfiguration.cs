@@ -1,6 +1,6 @@
 namespace EasyRiotApi.Config;
 
-public class RiotApiConfiguration
+public class EasyRiotApiConfiguration
 {
     public string ApiKey { get; set; } = string.Empty;
 }

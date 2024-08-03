@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace EasyRiotApi.Models;
+namespace EasyRiotApi.Models.Account;
 
 public class ActiveShardDto
 {
