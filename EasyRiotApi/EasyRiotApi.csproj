@@ -19,6 +19,7 @@
         <FileVersion>1.0.0.0</FileVersion>
         <NeutralLanguage>en-GB</NeutralLanguage>
         <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,6 +29,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\Riot\" />
+        <None Include="../README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
